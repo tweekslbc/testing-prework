@@ -1,7 +1,9 @@
 const Sequelize = require('sequelize');
 const { STRING, UUID, UUIDV4 } = Sequelize;
 
-const conn = new Sequelize(process.env.DATABASE_URL || 'postgres://localhost/acme_tdd_db');
+const conn = new Sequelize(process.env.DATABASE_URL || 'postgres://localhost/acme_tdd_db', {
+    logging: false
+});
 
 const Product = conn.define('product', {
     id: {
