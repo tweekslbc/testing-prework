@@ -20,5 +20,9 @@
   "devDependencies": {
     "chai": "^4.2.0",
     "mocha": "^6.2.0"
+  },
+  "dependencies": {
+    "pg": "^7.12.1",
+    "sequelize": "^5.19.0"
   }
 }
