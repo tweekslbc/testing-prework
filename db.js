@@ -11,7 +11,13 @@ const Product = conn.define('product', {
         type: UUID,
         defaultValue: UUIDV4
     },
-    name: STRING
+    name: {
+        type: STRING,
+        allowNull: false,
+        validate: {
+            notEmpty: true
+        }
+    }
 });
 
 const Category = conn.define('category', {
@@ -54,5 +60,9 @@ const syncAndSeed = async() => {
 };
 
 module.exports = {
-    syncAndSeed
+    syncAndSeed,
+    models:{
+        Product,
+        Category
+    }
 };
