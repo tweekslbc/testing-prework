@@ -14,6 +14,16 @@ describe('Acme TDD', ()=> {
    it('a product belongs to a category', ()=> {
     expect(seed.products.foo.categoryId).to.equal(seed.categories.catFoo.id);    
    });
+   describe('isExpensive', ()=> {
+    it('a product with a suggestedPrice greater than 10 is expensive', ()=> {
+      expect(Product.build({ suggestedPrice: 11 }).isExpensive).to.equal(true);  
+    
+    });  
+    it('a product with a suggestedPrice 10 dollars  or less is not expensive', ()=>{
+      expect(Product.build({ suggestedPrice: 10 }).isExpensive).to.equal(false);
+   });
+   
+   
    describe('Product validation', () => {
        it('name is required', ()=>{
         return Product.create({})
