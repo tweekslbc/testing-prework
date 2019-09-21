@@ -23,7 +23,12 @@ describe('Acme TDD', ()=> {
       expect(Product.build({ suggestedPrice: 10 }).isExpensive).to.equal(false);
    });
    
-   
+   describe('findAllExpensiveProducts', ()=> {
+       it('there is one expensive product', async()=> {
+           const expensive = await Product.findAllExpensive();
+           expect(expensive.length).to.equal(1);
+       });
+   });
    describe('Product validation', () => {
        it('name is required', ()=>{
         return Product.create({})
@@ -39,6 +44,6 @@ describe('Acme TDD', ()=> {
             })
             .catch( ex => expect(ex.errors[0].path).to.equal('name'));
          });
-       });
+       })
     });
-  });
+    });
